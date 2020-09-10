@@ -1,0 +1,204 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 32744 bytes for ChunkPool::allocate
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:272), pid=2816, tid=0x00000000000026b4
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_221-b11) (build 1.8.0_221-b11)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.221-b11 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000015b8c000):  JavaThread "C1 CompilerThread2" daemon [_thread_in_native, id=9908, stack(0x0000000017300000,0x0000000017400000)]
+
+Stack: [0x0000000017300000,0x0000000017400000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+Current CompileTask:
+C1:    424  167       3       sun.nio.cs.UTF_8$Decoder::decode (779 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x0000000017756000 JavaThread "surefire-forkedjvm-last-ditch-daemon-shutdown-thread-30s" daemon [_thread_blocked, id=5352, stack(0x0000000017d40000,0x0000000017e40000)]
+  0x0000000015bde800 JavaThread "Service Thread" daemon [_thread_blocked, id=12160, stack(0x0000000017800000,0x0000000017900000)]
+=>0x0000000015b8c000 JavaThread "C1 CompilerThread2" daemon [_thread_in_native, id=9908, stack(0x0000000017300000,0x0000000017400000)]
+  0x0000000015b84800 JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=10028, stack(0x0000000017200000,0x0000000017300000)]
+  0x0000000015b81800 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=10716, stack(0x0000000017100000,0x0000000017200000)]
+  0x0000000015b80000 JavaThread "Attach Listener" daemon [_thread_blocked, id=8724, stack(0x0000000017000000,0x0000000017100000)]
+  0x0000000015b7f000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=11064, stack(0x0000000016f00000,0x0000000017000000)]
+  0x0000000003546800 JavaThread "Finalizer" daemon [_thread_blocked, id=5188, stack(0x0000000016e00000,0x0000000016f00000)]
+  0x0000000015b6a800 JavaThread "Reference Handler" daemon [_thread_blocked, id=644, stack(0x0000000016d00000,0x0000000016e00000)]
+  0x000000000135e000 JavaThread "main" [_thread_blocked, id=11236, stack(0x0000000003350000,0x0000000003450000)]
+
+Other Threads:
+  0x0000000015b47000 VMThread [stack: 0x0000000016c00000,0x0000000016d00000] [id=5964]
+  0x000000001744e800 WatcherThread [stack: 0x0000000017900000,0x0000000017a00000] [id=9268]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+OutOfMemory and StackOverflow Exception counts:
+OutOfMemoryError java_heap_errors=4
+
+heap address: 0x00000000c1000000, size: 1008 MB, Compressed Oops mode: 32-bit
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x0000000100000000
+
+Heap:
+ PSYoungGen      total 18944K, used 1092K [0x00000000eb000000, 0x00000000ec500000, 0x0000000100000000)
+  eden space 16384K, 6% used [0x00000000eb000000,0x00000000eb1111d8,0x00000000ec000000)
+  from space 2560K, 0% used [0x00000000ec000000,0x00000000ec000000,0x00000000ec280000)
+  to   space 2560K, 0% used [0x00000000ec280000,0x00000000ec280000,0x00000000ec500000)
+ ParOldGen       total 31232K, used 1339K [0x00000000c1000000, 0x00000000c2e80000, 0x00000000eb000000)
+  object space 31232K, 4% used [0x00000000c1000000,0x00000000c114eff0,0x00000000c2e80000)
+ Metaspace       used 4991K, capacity 5204K, committed 5504K, reserved 1058816K
+  class space    used 548K, capacity 592K, committed 640K, reserved 1048576K
+
+Card table byte_map: [0x0000000012910000,0x0000000012b10000] byte_map_base: 0x0000000012308000
+
+Marking Bits: (ParMarkBitMap*) 0x0000000055195ce0
+ Begin Bits: [0x0000000013060000, 0x0000000014020000)
+ End Bits:   [0x0000000014020000, 0x0000000014fe0000)
+
+Polling page: 0x0000000000ff0000
+
+CodeCache: size=245760Kb used=1437Kb max_used=1437Kb free=244322Kb
+ bounds [0x0000000003550000, 0x00000000037c0000, 0x0000000012550000]
+ total_blobs=453 nmethods=166 adapters=200
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 0.267 Thread 0x0000000015b8c000  162       3       java.nio.DirectLongBufferU::get (16 bytes)
+Event: 0.268 Thread 0x0000000015b8c000 nmethod 162 0x00000000036b6b50 code [0x00000000036b6cc0, 0x00000000036b6f30]
+Event: 0.268 Thread 0x0000000015b8c000  164       3       java.nio.DirectLongBufferU::put (18 bytes)
+Event: 0.268 Thread 0x0000000015b8c000 nmethod 164 0x00000000036b7050 code [0x00000000036b71c0, 0x00000000036b7430]
+Event: 0.268 Thread 0x0000000015b8c000  166       1       java.security.CodeSource::getLocation (5 bytes)
+Event: 0.268 Thread 0x0000000015b8c000 nmethod 166 0x00000000036b7550 code [0x00000000036b76a0, 0x00000000036b77b0]
+Event: 0.268 Thread 0x0000000015b8c000  165       1       java.net.URLClassLoader::access$000 (5 bytes)
+Event: 0.268 Thread 0x0000000015b8c000 nmethod 165 0x00000000036b7810 code [0x00000000036b7960, 0x00000000036b7a50]
+Event: 0.268 Thread 0x0000000015b8c000  167       3       sun.nio.cs.UTF_8$Decoder::decode (779 bytes)
+Event: 0.270 Thread 0x0000000015b84800  170       4       java.lang.String::startsWith (72 bytes)
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (6 events):
+Event: 0.047 Thread 0x000000000135e000 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.defineClass(Ljava/lang/String;[BII)Ljava/lang/Class; name or signature does not match> (0x00000000eb007cb8) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u221\13320\hotspot
+Event: 0.047 Thread 0x000000000135e000 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.prefetchRead(Ljava/lang/Object;J)V name or signature does not match> (0x00000000eb007fa0) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u221\13320\hotspot\src\share\vm\prim
+Event: 0.213 Thread 0x000000000135e000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000eb28f228) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u221\13320\hotspot\src\share\vm\prims\jvm.cpp, line 1502]
+Event: 0.214 Thread 0x000000000135e000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000eb28f620) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u221\13320\hotspot\src\share\vm\prims\jvm.cpp, line 1502]
+Event: 0.214 Thread 0x000000000135e000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000eb2939d0) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u221\13320\hotspot\src\share\vm\prims\jvm.cpp, line 1502]
+Event: 0.215 Thread 0x000000000135e000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000eb293dc8) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u221\13320\hotspot\src\share\vm\prims\jvm.cpp, line 1502]
+
+Events (10 events):
+Event: 0.269 loading class org/apache/maven/surefire/booter/ProviderPropertiesAware
+Event: 0.269 loading class org/apache/maven/surefire/booter/ProviderPropertiesAware done
+Event: 0.269 loading class org/apache/maven/surefire/providerapi/ProviderParameters
+Event: 0.269 loading class org/apache/maven/surefire/providerapi/ProviderParameters done
+Event: 0.270 loading class org/apache/maven/surefire/booter/TestArtifactInfoAware
+Event: 0.270 loading class org/apache/maven/surefire/booter/TestArtifactInfoAware done
+Event: 0.270 loading class org/apache/maven/surefire/booter/RunOrderParametersAware
+Event: 0.270 loading class org/apache/maven/surefire/booter/RunOrderParametersAware done
+Event: 0.270 loading class org/apache/maven/surefire/booter/MainCliOptionsAware
+Event: 0.270 loading class org/apache/maven/surefire/booter/MainCliOptionsAware done
+
+
+Dynamic libraries:
+0x00007ff6aab20000 - 0x00007ff6aab57000 	C:\Program Files\Java\jdk1.8.0_221\jre\bin\java.exe
+0x00007ffd18df0000 - 0x00007ffd18fd1000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffd16650000 - 0x00007ffd16701000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ffd155f0000 - 0x00007ffd15863000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ffd168a0000 - 0x00007ffd16941000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ffd18530000 - 0x00007ffd185ce000 	C:\Windows\System32\msvcrt.dll
+0x00007ffd162e0000 - 0x00007ffd1633b000 	C:\Windows\System32\sechost.dll
+0x00007ffd18b40000 - 0x00007ffd18c64000 	C:\Windows\System32\RPCRT4.dll
+0x00007ffd16710000 - 0x00007ffd168a0000 	C:\Windows\System32\USER32.dll
+0x00007ffd15360000 - 0x00007ffd15380000 	C:\Windows\System32\win32u.dll
+0x00007ffd18d90000 - 0x00007ffd18db8000 	C:\Windows\System32\GDI32.dll
+0x00007ffd15fe0000 - 0x00007ffd16171000 	C:\Windows\System32\gdi32full.dll
+0x00007ffd161d0000 - 0x00007ffd1626f000 	C:\Windows\System32\msvcp_win.dll
+0x00007ffd15260000 - 0x00007ffd15358000 	C:\Windows\System32\ucrtbase.dll
+0x00007ffd0ad40000 - 0x00007ffd0afa9000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.17134.1067_none_d401a3eb7c8ebdea\COMCTL32.dll
+0x00007ffd185d0000 - 0x00007ffd188f1000 	C:\Windows\System32\combase.dll
+0x00007ffd15570000 - 0x00007ffd155e9000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007ffd18d60000 - 0x00007ffd18d8d000 	C:\Windows\System32\IMM32.DLL
+0x0000000057b80000 - 0x0000000057c52000 	C:\Program Files\Java\jdk1.8.0_221\jre\bin\msvcr100.dll
+0x0000000054970000 - 0x0000000055215000 	C:\Program Files\Java\jdk1.8.0_221\jre\bin\server\jvm.dll
+0x00007ffd16a90000 - 0x00007ffd16a98000 	C:\Windows\System32\PSAPI.DLL
+0x00007ffd0f920000 - 0x00007ffd0f929000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ffd11670000 - 0x00007ffd11693000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffd0ea40000 - 0x00007ffd0ea4a000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffd16c00000 - 0x00007ffd16c6c000 	C:\Windows\System32\WS2_32.dll
+0x00007ffd11640000 - 0x00007ffd1166a000 	C:\Windows\SYSTEM32\WINMMBASE.dll
+0x00007ffd16180000 - 0x00007ffd161c9000 	C:\Windows\System32\cfgmgr32.dll
+0x00007ffd0e050000 - 0x00007ffd0e05f000 	C:\Program Files\Java\jdk1.8.0_221\jre\bin\verify.dll
+0x00007ffd0a8c0000 - 0x00007ffd0a8e9000 	C:\Program Files\Java\jdk1.8.0_221\jre\bin\java.dll
+0x00007ffd0aa90000 - 0x00007ffd0aaa6000 	C:\Program Files\Java\jdk1.8.0_221\jre\bin\zip.dll
+0x00007ffd16c70000 - 0x00007ffd180b4000 	C:\Windows\System32\SHELL32.dll
+0x00007ffd16960000 - 0x00007ffd16a09000 	C:\Windows\System32\shcore.dll
+0x00007ffd15870000 - 0x00007ffd15f80000 	C:\Windows\System32\windows.storage.dll
+0x00007ffd16280000 - 0x00007ffd162d1000 	C:\Windows\System32\shlwapi.dll
+0x00007ffd15190000 - 0x00007ffd151a1000 	C:\Windows\System32\kernel.appcore.dll
+0x00007ffd15140000 - 0x00007ffd1515f000 	C:\Windows\System32\profapi.dll
+0x00007ffd150f0000 - 0x00007ffd1513c000 	C:\Windows\System32\powrprof.dll
+0x00007ffd15160000 - 0x00007ffd1516a000 	C:\Windows\System32\FLTLIB.DLL
+0x00007ffd0a890000 - 0x00007ffd0a89d000 	C:\Program Files\Java\jdk1.8.0_221\jre\bin\management.dll
+
+VM Arguments:
+java_command: C:\Users\HP\AppData\Local\Temp\surefire7463202699136928666\surefirebooter8089558886561057128.jar C:\Users\HP\AppData\Local\Temp\surefire7463202699136928666 2020-09-10T16-37-29_175-jvmRun1 surefire7557819895011681858tmp surefire_01519490395159580573tmp
+java_class_path (initial): C:\Users\HP\AppData\Local\Temp\surefire7463202699136928666\surefirebooter8089558886561057128.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_221
+PATH=C:\Program Files\Java\jdk1.8.0_221\bin;C:\WINDOWS\system64;C:\WINDOWS;C:/WINDOWS\System64\Wbem;C:/WINDOWS\system64\WindowsPowerShell\v1.0;C:\Program Files\apache-maven-3.6.3\bin;C:\Program Files\Git\cmd;C:\Users\HP\AppData\Local\Microsoft\WindowsApps;C:\Users\HP\Downloads;;C:\Users\HP\AppData\Local\Programs\Microsoft VS Code\bin
+USERNAME=HP
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 69 Stepping 1, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 17134 (10.0.17134.753)
+
+CPU:total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 69 stepping 1, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2
+
+Memory: 4k page, physical 4127020k(401808k free), swap 16709932k(135808k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.221-b11) for windows-amd64 JRE (1.8.0_221-b11), built on Jul  4 2019 04:39:29 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Thu Sep 10 16:37:32 2020
+timezone: India Standard Time
+elapsed time: 0 seconds (0d 0h 0m 0s)
+
