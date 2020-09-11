@@ -31,30 +31,27 @@ public class SearchPageObject {
 	}
 	
 	public void find_product_and_click(String expectedTitle) {
+		
 		WebDriverWait wait1 = new WebDriverWait(driver,30);
 		wait1.until(ExpectedConditions.titleContains(expectedTitle));
 		String searchTitle = driver.getTitle();
 		Assert.assertEquals("Match Search Title", expectedTitle, searchTitle);
 		
-		//WebDriverWait wait2 = new WebDriverWait(driver,30);
-		//wait2.until(ExpectedConditions.elementToBeClickable(BoatBassHeads));
 		driver.findElement(BoatBassHeads).click();
-	}
 		
-	public void click_On_Particular_Product()  {
-		driver.findElement(BoatBassHeads).click();
-		//driver.getTitle();
 		Set<String> handles = driver.getWindowHandles();
 		Iterator<String> It = handles.iterator();
+		String ParentWindowId = It.next();
 		String childWindowId = It.next();
 		driver.switchTo().window(childWindowId);
-		driver.getTitle();
-		driver.close();
+		
+		WebDriverWait wait2 = new WebDriverWait(driver,20);
+		String expected = "boAt BassHeads 100 in-Ear Wired Earphones with Super: Amazon.in: Electronics";
+		String actual = driver.getTitle();
+		wait2.until(ExpectedConditions.titleContains(expected));
+		Assert.assertEquals(expected, actual);
 		
 	}
-	//public void clickProduct() {
-		//driver.findElement(BoultAudio).click();
-	//}
-	}
-	
+		
+}	
 
