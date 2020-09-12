@@ -6,6 +6,7 @@ import org.openqa.selenium.interactions.ClickAction;
 import core.Test_Base;
 import pageObjects.CommonPageObject;
 import pageObjects.HomePageObject;
+import pageObjects.LogInPageObject;
 import pageObjects.ProductDescrPageObject;
 import pageObjects.SearchPageObject;
 import pageObjects.ShoppingCartPageObject;
@@ -47,6 +48,13 @@ public class TestCase1 extends Test_Base{
 		shopCartObj.Validate_ShoppingPageTitle("Amazon.in Shopping Cart");
 		shopCartObj.Validate_CheckAddedToCartMsg();
 		shopCartObj.AddedToCart();
+		shopCartObj.ValidateProceedToButton();
+		shopCartObj.ClickOnProceedButtn();
+		
+		LogInPageObject LoginObj = new LogInPageObject(driver);
+		LoginObj.ValidatePageTitle("Amazon Sign In");
+		LoginObj.CheckLogInPageIsDisplayed();
+		LoginObj.CheckEmailInputBox();
 		
 	}
 	

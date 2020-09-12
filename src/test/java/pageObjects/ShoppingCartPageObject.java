@@ -12,6 +12,7 @@ public class ShoppingCartPageObject {
 	private WebDriver driver;
 	private By AddedToCartMsg = By.id("huc-v2-order-row-items-msg");
 	private By AddedToCart = By.id("nav-cart-count");
+	private By ProceedToBuy = By.id("hlb-ptc-btn-native");
 	
 	public ShoppingCartPageObject(WebDriver driver) {
 		this.driver = driver;
@@ -38,12 +39,23 @@ public class ShoppingCartPageObject {
 		wait1.until(ExpectedConditions.titleContains(expected));
 		Assert.assertEquals("Title Shopping Page", expected, actual);*/
 	}
+	
 	public void AddedToCart() {
-		
-		
 		boolean b = driver.findElement(AddedToCart).isDisplayed();
-		Assert.assertEquals("one product is added", true, b);
+		Assert.assertEquals("one product is added", true, b);	
 		
+	}
+	public void ValidateProceedToButton() {
+		boolean b = driver.findElement(ProceedToBuy).isDisplayed();
+		Assert.assertEquals("ProccedToButton", true, b);
+	}
+	
+	public void ClickOnProceedButtn() {
+		driver.findElement(ProceedToBuy).click();
 		
+		String expected = "Amazon Sign In";
+		WebDriverWait wait2 = new WebDriverWait(driver,20);
+		wait2.until(ExpectedConditions.titleContains(expected));
+		Assert.assertEquals("LogIn Page Title", expected, driver.getTitle());
 	}
 }
